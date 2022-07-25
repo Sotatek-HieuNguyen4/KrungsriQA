@@ -21,34 +21,37 @@ public class FindCarTestCases extends BaseTest {
     @Test(dataProvider="Filter Data Which Use For Testing")
     public void Test_Filter_Car(String carType, String carBrand, String carModel, String carSubModel, String carRegisYear, String carRegisProvince, String carInsurance ) {
 
-        log.info("Step 3: Open Filter by clicking on CarType option");
+        log.info("Step 1: Open Filter by clicking on CarType option");
         landingPage.clickToCarTypeFilter(driver);
 
-        log.info("Step 4: Select carType");
+        log.info("Step 2: Select carType");
         landingPage.selectCarType(driver,carType);
 
-        log.info("Step 5: Select carBrand");
+        log.info("Step 3: Select carBrand");
         landingPage.selectCarBrand(driver,carBrand);
 
-        log.info("Step 6: Select carModel");
+        log.info("Step 4: Select carModel");
         landingPage.selectCarModel(driver,carModel);
 
-        log.info("Step 7: Select carSubModel");
+        log.info("Step 5: Select carSubModel");
         landingPage.selectCarSubModel(driver,carSubModel);
 
-        log.info("");
+        log.info("Step 6: Select Car registration Year");
         landingPage.selectCarRegistrationYear(driver,carRegisYear);
 
-        log.info("");
+        log.info("Step 7: Select Car Registration Province");
         landingPage.selectCarRegistrationProvince(driver,carRegisProvince);
 
-        log.info("");
+        log.info("Step 8: Customize Insurance Plans");
         landingPage.customizeInsurancePlans(driver,carInsurance);
 
-        log.info("");
+        log.info("Step 9: Click filter button");
         landingPage.clickFilter(driver);
 
-        landingPage.refreshCurrenPage(driver);
+        landingPage.reloadPage(driver);
+
+        landingPage.sleepInSecond(3);
+
     }
 
     @DataProvider(name = "Filter Data Which Use For Testing")

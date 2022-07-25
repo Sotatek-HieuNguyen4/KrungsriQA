@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class BasePage {
 
@@ -64,6 +66,10 @@ public class BasePage {
 
     public void refreshCurrenPage( WebDriver driver) {
         driver.navigate().refresh();
+    }
+
+    public void waitForAllPageLoaded( WebDriver driver) {
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
     }
 
     public void sleepInSecond(long timeInSecond) {

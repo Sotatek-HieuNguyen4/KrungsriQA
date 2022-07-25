@@ -72,9 +72,15 @@ public class LandingPageObjects extends BasePage {
 
     @Step("Verify Search Result Displays")
     public void verifySearchResultDisplays(WebDriver driver) {
+        waitForAllPageLoaded(driver);
         waitForElementVisible(driver,LandingPageUIs.FILTER_RESULT_TEXT);
         String SEARCH_RESULT_TEXT = getElementText(driver,LandingPageUIs.FILTER_RESULT_TEXT);
         Assert.assertEquals(SEARCH_RESULT_TEXT, "ประกันภัยรถยนต์ยอดนิยม");
         sleepInSecond(3000);
+    }
+
+    public void reloadPage(WebDriver driver) {
+        refreshCurrenPage(driver);
+        waitForAllPageLoaded(driver);
     }
 }
