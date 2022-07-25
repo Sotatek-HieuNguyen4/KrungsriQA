@@ -4,6 +4,7 @@ import actions.commons.BasePage;
 import interfaces.LandingPageUIs;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class LandingPageObjects extends BasePage {
     WebDriver driver;
@@ -26,10 +27,8 @@ public class LandingPageObjects extends BasePage {
 
     @Step("Select car type")
     public void selectCarType(WebDriver driver, String option) {
-        switchToIframeByElement(driver,LandingPageUIs.FRAME_FILTER);
-        waitForElementVisible(driver,LandingPageUIs.CAR_TYPE,option);
+        waitForElementClickable(driver,LandingPageUIs.CAR_TYPE,option);
         clickToElement(driver,LandingPageUIs.CAR_TYPE,option);
-//        clickToElementByJS(driver,LandingPageUIs.CAR_TYPE,option);
 
     }
 
@@ -53,21 +52,29 @@ public class LandingPageObjects extends BasePage {
         clickToElementByJS(driver,LandingPageUIs.CAR_REGIS_YEAR,option);
     }
 
-    public void selectCarRegistrationProvince(WebDriver driver,String option) throws InterruptedException {
-        Thread.sleep(3000);
-        clickToElementByJS(driver,LandingPageUIs.CAR_REGIS_PROVINCE);
-        clickToElementByJS(driver,LandingPageUIs.PROVINCE);
-//        sendkeyToElementByJS(driver,LandingPageUIs.CAR_REGIS_PROVINCE,option);
-        Thread.sleep(3000);
+    @Step("select Car Registration Province")
+    public void selectCarRegistrationProvince(WebDriver driver,String province) {
+        waitForElementClickable(driver,LandingPageUIs.CAR_REGIS_PROVINCE);
+        clickToElement(driver,LandingPageUIs.CAR_REGIS_PROVINCE);
+        waitForElementVisible(driver,LandingPageUIs.PROVINCE,province);
+        clickToElement(driver,LandingPageUIs.PROVINCE,province);
     }
-
-    public void customizeIssurancePlans(WebDriver driver,String option) {
+    @Step("customize Insurance Plans")
+    public void customizeInsurancePlans(WebDriver driver, String option) {
         clickToElementByJS(driver,LandingPageUIs.CAR_INSURANCE_TYPE,option);
+        clickToElement(driver,LandingPageUIs.CONTINUE_BTN);
     }
-
+    @Step("Click filter")
     public void clickFilter(WebDriver driver) {
+        waitForElementClickable(driver,LandingPageUIs.SUBMIT_FILTER_BTN);
+        clickToElement(driver,LandingPageUIs.SUBMIT_FILTER_BTN);
     }
 
+    @Step("Verify Search Result Displays")
     public void verifySearchResultDisplays(WebDriver driver) {
+        waitForElementVisible(driver,LandingPageUIs.FILTER_RESULT_TEXT);
+        String SEARCH_RESULT_TEXT = getElementText(driver,LandingPageUIs.FILTER_RESULT_TEXT);
+        Assert.assertEquals(SEARCH_RESULT_TEXT, "ประกันภัยรถยนต์ยอดนิยม");
+        sleepInSecond(3000);
     }
 }

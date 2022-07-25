@@ -19,7 +19,7 @@ public class FindCarTestCases extends BaseTest {
     }
 
     @Test(dataProvider="Filter Data Which Use For Testing")
-    public void Test_Filter_Car(String carType, String carBrand, String carModel, String carSubModel, String carRegisYear, String carRegisProvince, String carInsurance ) throws InterruptedException {
+    public void Test_Filter_Car(String carType, String carBrand, String carModel, String carSubModel, String carRegisYear, String carRegisProvince, String carInsurance ) {
 
         log.info("Step 3: Open Filter by clicking on CarType option");
         landingPage.clickToCarTypeFilter(driver);
@@ -43,10 +43,12 @@ public class FindCarTestCases extends BaseTest {
         landingPage.selectCarRegistrationProvince(driver,carRegisProvince);
 
         log.info("");
-        landingPage.customizeIssurancePlans(driver,carInsurance);
+        landingPage.customizeInsurancePlans(driver,carInsurance);
+
+        log.info("");
+        landingPage.clickFilter(driver);
 
         landingPage.refreshCurrenPage(driver);
-
     }
 
     @DataProvider(name = "Filter Data Which Use For Testing")
