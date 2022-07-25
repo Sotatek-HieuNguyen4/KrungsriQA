@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="true" name="Suite" preserve-order="true">>
+    <parameter name = "url" value = "https://insurance.lotussmoney.com/" />
+
+    <test name="FindCarTest">
+        <parameter name ="browser" value = "Chrome" />
+        <classes>
+            <class name="test.FindCarTestCases"/>
+        </classes>
+    </test>
+</suite>
