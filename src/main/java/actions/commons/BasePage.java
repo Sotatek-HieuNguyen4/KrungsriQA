@@ -1,6 +1,5 @@
 package actions.commons;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -64,8 +63,8 @@ public class BasePage {
         return getElement(driver, locator).getText();
     }
 
-    public void refreshCurrenPage( WebDriver driver) {
-        driver.navigate().refresh();
+    public boolean isElementDisplay(WebDriver driver, String locator) {
+        return getElement(driver, locator).isDisplayed();
     }
 
     public void waitForAllPageLoaded( WebDriver driver) {

@@ -15,8 +15,9 @@ public class LandingPageObjects extends BasePage {
 
     @Step("Dismiss pop-up")
     public void clickToAgreeButton(WebDriver driver) {
-    waitForElementClickable(driver,LandingPageUIs.AGREE_BUTTON);
-    clickToElement(driver,LandingPageUIs.AGREE_BUTTON);
+        if(isElementDisplay(driver,LandingPageUIs.AGREE_BUTTON)==true){
+            clickToElement(driver,LandingPageUIs.AGREE_BUTTON);
+        }
     }
 
     @Step("Open filter by clicking on CarType Filter")
@@ -79,8 +80,9 @@ public class LandingPageObjects extends BasePage {
         sleepInSecond(3000);
     }
 
-    public void reloadPage(WebDriver driver) {
-        refreshCurrenPage(driver);
-        waitForAllPageLoaded(driver);
+    public void goToLandingPage(WebDriver driver) {
+        waitForElementClickable(driver,LandingPageUIs.HOME_LINK);
+        clickToElement(driver,LandingPageUIs.HOME_LINK);
     }
+
 }

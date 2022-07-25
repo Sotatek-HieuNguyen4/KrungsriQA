@@ -30,5 +30,5 @@ public class LandingPageUIs {
 
     public static final String  FILTER_RESULT_TEXT = "//span[text()='ประกันภัยรถยนต์ยอดนิยม']";
 
-
+    public static final String HOME_LINK = "//a[contains(text(),'หน้า')]";
 }

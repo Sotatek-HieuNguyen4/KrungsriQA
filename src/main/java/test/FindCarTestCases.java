@@ -48,9 +48,8 @@ public class FindCarTestCases extends BaseTest {
         log.info("Step 9: Click filter button");
         landingPage.clickFilter(driver);
 
-        landingPage.reloadPage(driver);
-
-        landingPage.sleepInSecond(3);
+        log.info("Step 10: Go back to LandingPage");
+        landingPage.goToLandingPage(driver);
 
     }
 
